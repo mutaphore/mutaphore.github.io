@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Arch Linux WiFi - Thought Paradise</title>
+  <meta name="author" content="Dewei Chen">
+
+  
+  <meta name="description" content="Arch Linux WiFi written in archlinux, dual boot I am dual booting a MBPr with OSX and Arch Linux. I found that because Arch requires an internet &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mutaphore.github.io/blog/2015/01/25/arch-linux-wifi">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Thought Paradise" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Arch Linux WiFi</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-01-25T00:08:27-05:00" pubdate data-updated="true"></time>
+          
+
+in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/archlinux/'>archlinux</a>, <a class='category' href='/blog/categories/dual-boot/'>dual boot</a>
+  
+</span>
+
+
+        </div>
+        <p>I am dual booting a MBPr with OSX and Arch Linux. I found that because Arch requires an internet connection to install its many dependencies with pacman, it was troublesome due to the lack of a ethernet port on the retina. So to even begin installing Arch you will need to setup the WiFi driver. For those new to Arch Linux, here are some tips.</p>
+
+<!-- more -->
+
+
+<h1>Setup</h1>
+
+<ul>
+<li>Macbook Pro Retina Mid-2012</li>
+<li>Bootable USB drive with Arch Linux ISO loaded</li>
+<li>Optional but highly recommended: Apple Thunderbolt port to ethernet adapter</li>
+</ul>
+
+
+<h1>Wifi</h1>
+
+<h2>Firmware</h2>
+
+<p>Installing Arch without a good internet connection is one of the biggest annoyances I had. For first-timers I recommend getting a Thunderbold port to ethernet converter if you don&rsquo;t already have one and follow the steps on Arch Linux&rsquo;s <a href="https://wiki.archlinux.org/index.php/beginners%27_guide">beginner&rsquo;s guide</a>. Depending on the amount of Wifi driver support your version of Arch Linux have, WiFi may or may not work right out of the box. To find out what WiFi interface you have, do the following to see if an interface driver exists for the WiFi card.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>ip link
+</span><span class='line'>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN mode DEFAULT group default
+</span><span class='line'>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span><span class='line'>2: wlp4s0c1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc mq state UP mode DORMANT group default qlen 1000
+</span><span class='line'>    link/ether b8:f0:b1:13:ba:8b brd ff:ff:ff:ff:ff:ff
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Broadcom</h2>
+
+<p><em>wlp4s0c1</em> is the WiFi interface driver. Yours may be different but it usually begins with a &ldquo;w&rdquo;. If you don&rsquo;t see that it means there&rsquo;s no driver installed for your WiFi card. For a mid-2012 MBPr you will need to install the b43-firmware driver (More info at <a href="https://wiki.archlinux.org/index.php/broadcom_wireless#b43.2Fb43legacy">https://wiki.archlinux.org/index.php/broadcom_wireless#b43.2Fb43legacy</a>).</p>
+
+<p>Doing this means that you will need an internet connection and download/install the package via the Arch Linux package manager <em>pacman</em> by doing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>sudo pacman -S b43-firmware
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you decided to do it the rough way and you&rsquo;re not already hooked up to the internet via the ethernet adapter, you will need to download the <a href="https://aur.archlinux.org/packages/b43-firmware/">b43-firmware</a> driver tarball onto another thumbdrive and run the following commands while inside the unzipped driver directory.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>makepkg
+</span><span class='line'><span class="nv">$ </span>sudo pacman -U
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Modprobe</h2>
+
+<p>After installing the driver, make sure to enable it by using modprobe and reboot.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>sudo modprobe b43
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To confirm you have the b43 module installed, run lsmod to list all the modules currently active and filter ones with b43. You should see something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>lsmod <span class="p">|</span> grep b43
+</span><span class='line'>b43                   <span class="m">414640</span>  <span class="m">0</span>
+</span><span class='line'>mac80211              <span class="m">608652</span>  <span class="m">1</span> b43
+</span><span class='line'>cfg80211              <span class="m">453926</span>  <span class="m">2</span> b43,mac80211
+</span><span class='line'>ssb                    <span class="m">65506</span>  <span class="m">1</span> b43
+</span><span class='line'>rng_core               <span class="m">12808</span>  <span class="m">1</span> b43
+</span><span class='line'>pcmcia                 <span class="m">53108</span>  <span class="m">2</span> b43,ssb
+</span><span class='line'>bcma                   <span class="m">46116</span>  <span class="m">1</span> b43
+</span><span class='line'>led_class              <span class="m">12855</span>  <span class="m">3</span> b43,sdhci,applesmc
+</span><span class='line'>mmc_core              <span class="m">110515</span>  <span class="m">4</span> b43,ssb,sdhci,sdhci_pci
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Wifi-menu</h2>
+
+<p>By this point you should have the necessary WiFi interface to connect to the hardware card. Given this is Arch Linux and we&rsquo;re only given the bare bones of an OS, the next step is to get some sort of user-friendly interface so we can actually see what networks are around us so we can connect to it. In Arch the manager of network connections is called <a href="https://wiki.archlinux.org/index.php/netctl">netctl</a> and a higher layer UI for looking up wifi networks is <a href="https://www.archlinux.org/packages/?name=dialog">wifi-menu</a> (Note: wifi-menu is actually a program named <em>dialog</em> in the arch repo). Go ahead and use pacman to install both these programs if you don&rsquo;t already have it. You should then be able to run:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo wifi-menu
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="/images/wifi.png" alt="WiFi" /></p>
+
+<p>Pick your network and enter the wpa password. Wifi-menu will auto generate a network profile for you if it doesn&rsquo;t exist already at /etc/netctl. Now you have a working WiFi connection!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2015/01/20/hello-world/" title="Previous Post: Hello World">&laquo; Previous: Hello World</a>
+        
+
+        
+          <a class="pull-right" href="/blog/2015/05/20/thoughts-on-functional-programming/" title="Next Post: Thoughts on Functional Programming">Next: Thoughts on Functional Programming &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/mutaphore"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+    <a href="mailto:dewei.chen@cs.nyu.edu"><img src="/images/glyphicons_social_39_e-mail.png"/></a>
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'mutaphore';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mutaphore.github.io/blog/2015/01/25/arch-linux-wifi/';
+        var disqus_url = 'http://mutaphore.github.io/blog/2015/01/25/arch-linux-wifi/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

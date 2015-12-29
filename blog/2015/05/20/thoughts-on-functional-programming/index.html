@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Thoughts on Functional Programming - Thought Paradise</title>
+  <meta name="author" content="Dewei Chen">
+
+  
+  <meta name="description" content="Thoughts on Functional Programming written in programming languages This past semester my Programming Languages class exposed us to several &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mutaphore.github.io/blog/2015/05/20/thoughts-on-functional-programming">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Thought Paradise" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Thoughts on Functional Programming</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-05-20T01:38:01-04:00" pubdate data-updated="true"></time>
+          
+
+in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/programming-languages/'>programming languages</a>
+  
+</span>
+
+
+        </div>
+        <p>This past semester my Programming Languages class exposed us to several functional languages: Lisp/Scheme, SML and Scala (to a lesser extent). Before this exposition I really had no clue about what functional programming is. FP is a ubiquitous term used in all software/cs talks, most of the time I’ll just pretend to know what people are talking about. However, quickly I will realize that knowledge acquired from a 5 min wikipedia read just barely scratches the surface on this topic.</p>
+
+<!-- more -->
+
+
+<h1>What is FP (Functional Programming)?</h1>
+
+<p>A programming language is the medium in which we communicate with the computer and instruct it to do certain tasks. There are many ways to write a program, just as there are many ways to write an essay. Functional programming is, on very simple terms, a style of writing a program. The other major way is the imperative style, which is the more easily understood and most widely used (which we will not talk about here). The difference between imperative and functional programming boils down to the following:
+* Imperative - tell the computer how to do something
+* Functional - tell the computer definition of something</p>
+
+<p>So imperative style is the “How” and functional style is the “What” of doing something. In the classical problem to calculate the factorial of number, with an imperative style, the pseudocode would be following:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fac(n):
+</span><span class='line'>    res = 1
+</span><span class='line'>    for i = 1 to n:
+</span><span class='line'>        res = res * i
+</span><span class='line'>    return res</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now for functional style:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>fac(n):
+</span><span class='line'>    if n == 0 or 1:
+</span><span class='line'>        return 1
+</span><span class='line'>    else:
+</span><span class='line'>        return n * fac(n - 1)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If we were to translate the program into words, the imperative style factorial would be:</p>
+
+<p>“To calculate factorial of n, first start with a result variable that holds 1, then repeatedly multiply it by the next larger number 2, 3, etc. until you reach the n value. Each time you multiply save the result of the product back into the result variable. After all n numbers are multiplied, just return the result.”
+The functional verbal version would be:</p>
+
+<p>“By definition, factorial of 0 or 1 is always 1. Otherwise, Factorial of a number is just the product of that number with the factorial of a number that is 1 smaller.”
+In an imperative style, we explicitly tell the computer that the steps that it needs to take to reach a goal by using “imperatives”, i.e. an instruction sequence. In a functional style, we give it the precise definition of what it is that it needs to compute. Functional programming is like telling the computer the math formula for doing something and then let it handle the rest.</p>
+
+<h1>Which universe are you in?</h1>
+
+<h2>Loops</h2>
+
+<p>The presence of any kind of looping construct in a program means that it belongs in the “imperative universe”. This is because when we are talking about loops, we are essentially thinking about the sequential steps of doing something instead of the definition of something. In purely functional languages, there are no loop constructs so it forces the programmer to use recursion. This was probably one of the hardest thing to grasp for me when I first started programming in functional languages like Scheme or SML.</p>
+
+<p>For example, how do we write a function to sum up all the elements in an array A, given its length n? Assuming there is at least 1 element in the array, the logic of an imperative style is a piece of cake:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">total</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For the functional style:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that the functional style did not use any loops at all. The definition provided by the functional style program is essentially saying:</p>
+
+<p>“The sum of a 1-item array is simply value of the only item in the array. Otherwise, the sum is the first item in the array plus the sum of the rest of the elements in the array.”
+Now read that over a few times, isn’t that exactly what the definition of an array sum?</p>
+
+<h2>States</h2>
+
+<p>Another reality test between imperative and functional is the presence of states. In the previous examples, note the occurrence of the res and sum variables in the imperative style that were used to keep track of the progress of the function. Without these state variables we have no way of knowning when to finish and return the answer. This is the pattern of saving state in an imperative programming style. In contrast, functional styles do not care about states because the program is not written in sequential imperatives. If a functional program correctly defines the problem in its entirety, it will return the correct result without needing to keep track of the running state.</p>
+
+<p>In the functional universe, lack of state also means lack of mutable variables. We no longer need to define variables that mutates or changes to help us keep track of some state. This is why functional style centers on the paradigm of immutability. Immutability also translates to not needing to make any assignment to variables, because if we assign something we change it, if we change it then we destroy the functional aspect of the program. Thus, immutability is closely related to lack of the concept of assignment in a program.</p>
+
+<p>Functional programming languages such as Scheme does not have the assignment operator, forcing the programmer to code in a functional manner:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scheme'><span class='line'><span class="c1">; Remove element k from list L</span>
+</span><span class='line'><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">rem</span> <span class="nv">L</span> <span class="nv">k</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">= </span><span class="nv">k</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">L</span><span class="p">))</span>   <span class="c1">; &#39;=&#39; here means equality and not assignment!</span>
+</span><span class='line'>        <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">car </span><span class="nv">L</span><span class="p">)</span> <span class="p">(</span><span class="nf">rem</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">L</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">k</span> <span class="mi">1</span><span class="p">))))))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Languages such as ML have the assignment operator to create a val. But once a value is assigned something, it cannot be changed later:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='scheme'><span class='line'><span class="p">(</span><span class="nb">* </span><span class="nv">Bubbles</span> <span class="nv">smallest</span> <span class="nv">value</span> <span class="nv">to</span> <span class="nv">beginning</span> <span class="nv">of</span> <span class="nv">list</span> <span class="nv">*</span><span class="p">)</span>
+</span><span class='line'><span class="nv">fun</span> <span class="nv">bubble</span> <span class="p">[]</span> <span class="nv">=</span> <span class="nv">raise</span> <span class="nv">listError</span>
+</span><span class='line'> <span class="nv">|</span>  <span class="nv">bubble</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span> <span class="nv">=</span> <span class="p">[</span><span class="nv">x</span><span class="p">]</span>
+</span><span class='line'> <span class="nv">|</span>  <span class="nv">bubble</span> <span class="p">(</span><span class="nf">x::xs</span><span class="p">)</span> <span class="nv">=</span>
+</span><span class='line'>    <span class="k">let </span><span class="nv">val</span> <span class="p">(</span><span class="nf">y::ys</span><span class="p">)</span> <span class="nv">=</span> <span class="nv">bubble</span> <span class="nv">xs</span>
+</span><span class='line'>    <span class="nv">in</span> <span class="k">if </span><span class="nv">y</span> <span class="nv">&lt;</span> <span class="nv">x</span> <span class="nv">then</span>
+</span><span class='line'>       <span class="nv">y::x::ys</span>
+</span><span class='line'>       <span class="nv">else</span>
+</span><span class='line'>       <span class="nv">x::y::ys</span>
+</span><span class='line'>    <span class="nv">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In line 5, val (y::ys) = bubble xs binds (y::ys) to the result of calling bubble recursively. Once bound, its value cannot be changed further.</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2015/01/25/arch-linux-wifi/" title="Previous Post: Arch Linux WiFi">&laquo; Previous: Arch Linux WiFi</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+
+    
+    <a href="https://github.com/mutaphore"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+
+    
+    <a href="mailto:dewei.chen@cs.nyu.edu"><img src="/images/glyphicons_social_39_e-mail.png"/></a>
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'mutaphore';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mutaphore.github.io/blog/2015/05/20/thoughts-on-functional-programming/';
+        var disqus_url = 'http://mutaphore.github.io/blog/2015/05/20/thoughts-on-functional-programming/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
