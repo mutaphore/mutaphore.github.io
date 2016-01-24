@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming Languages | Thought Paradise]]></title>
   <link href="http://mutaphore.github.io/blog/categories/programming-languages/atom.xml" rel="self"/>
   <link href="http://mutaphore.github.io/"/>
-  <updated>2015-12-30T02:25:11-05:00</updated>
+  <updated>2016-01-24T16:24:29-05:00</updated>
   <id>http://mutaphore.github.io/</id>
   <author>
     <name><![CDATA[Dewei Chen]]></name>
@@ -25,9 +25,13 @@
 
 <h1>What is FP (Functional Programming)?</h1>
 
-<p>A programming language is the medium in which we communicate with the computer and instruct it to do certain tasks. There are many ways to write a program, just as there are many ways to write an essay. Functional programming is, on very simple terms, a style of writing a program. The other major way is the imperative style, which is the more easily understood and most widely used (which we will not talk about here). The difference between imperative and functional programming boils down to the following:
-* Imperative - tell the computer how to do something
-* Functional - tell the computer definition of something</p>
+<p>A programming language is the medium in which we communicate with the computer and instruct it to do certain tasks. There are many ways to write a program, just as there are many ways to write an essay. Functional programming is, on very simple terms, a style of writing a program. The other major way is the imperative style, which is the more easily understood and most widely used (which we will not talk about here). The difference between imperative and functional programming boils down to the following:</p>
+
+<ul>
+<li>Imperative - tell the computer how to do something</li>
+<li>Functional - tell the computer definition of something</li>
+</ul>
+
 
 <p>So imperative style is the “How” and functional style is the “What” of doing something. In the classical problem to calculate the factorial of number, with an imperative style, the pseudocode would be following:</p>
 
