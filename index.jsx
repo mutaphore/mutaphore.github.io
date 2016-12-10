@@ -1,9 +1,11 @@
 'use strict';
 
-const React = require('react');
+import App from "./app.jsx";
+
+const React    = require('react');
 const ReactDOM = require('react-dom');
 
 ReactDOM.render(
-  <h1>Hello World!</h1>,
+  <App />,
   document.getElementById("root")
 );
