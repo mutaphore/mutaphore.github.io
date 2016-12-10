@@ -1,0 +1,22 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  background: #787878;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+header#titleBar {
+  background: #A9D0F5;
+  height: 85px;
+}
+
+span#title {
+  font-weight: bold;
+  margin: 20px;
+  color: #FE2E2E;
+  font-size: 32px;
+}
