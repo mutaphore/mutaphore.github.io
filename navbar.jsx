@@ -1,5 +1,7 @@
 'use strict';
 
+import Constants from "./constants.jsx";
+
 const React    = require('react');
 const ReactDOM = require('react-dom');
 
@@ -8,6 +10,22 @@ class NavBar extends React.Component {
     super(props);
   }
   render() {
+    const self = this;
+    const navItems = [];
+    // only render the navbar items when not at home view
+    if (this.props.selectedView !== "home") {
+      this.props.views.forEach(function (view) {
+        if (view === self.props.selectedView) {
+          navItems.push(
+            <li key={view} className="active"><a href="#" onClick={self.props.selectView.bind(null, view)}>{view}</a></li> 
+          )
+        } else {
+          navItems.push(
+            <li key={view}><a href="#" onClick={self.props.selectView.bind(null, view)}>{view}</a></li> 
+          )
+        }
+      });
+    }
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="navbar-header">
@@ -21,11 +39,7 @@ class NavBar extends React.Component {
         </div>
         <div className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            <li id="home"><a href="#">home</a></li>
-            <li id="projects"><a href="#">projects</a></li>
-            <li id="about"><a href="#">about</a></li>
-            <li id="contact"><a href="#">contact</a></li>
-            <li id="terminal"><a href="#">terminal</a></li>
+            {navItems}
           </ul>
         </div>
       </nav>

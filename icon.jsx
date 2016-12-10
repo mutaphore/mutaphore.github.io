@@ -8,7 +8,7 @@ class Icon extends React.Component {
     return (
       <div className="media">
         <div className="media-left media-middle">
-          <a href="#">
+          <a href="#" onClick={this.props.selectView}>
             <img className="media-object" src={this.props.icon} />
           </a>
         </div>

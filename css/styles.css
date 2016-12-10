@@ -17,3 +17,8 @@ div #desktop {
   padding: 50px;
   color: #F5F5F5;
 }
+
+.window {
+  height: 600px;
+  width: 100%;
+}

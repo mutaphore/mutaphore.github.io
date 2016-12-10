@@ -7,15 +7,25 @@ const React    = require('react');
 const ReactDOM = require('react-dom');
 
 class Desktop extends React.Component {
+  selectView(view) {
+    this.props.selectView(view);
+  }
   render() {
+    const self = this;
+    const icons = [];
+    // only show icons when at home view
+    if (this.props.selectedView === "home") {
+      this.props.views.forEach(function (view) {
+        icons.push(
+          <Icon key={view} title={view} 
+                icon={Constants.get(view).icon}
+                selectView={self.selectView.bind(self, view)} />
+        );
+      });
+    }
     return (
       <div id="desktop">
-        <Icon title="home" icon={Constants.get("ICON_HOME")}/>
-        <Icon title="projects" icon={Constants.get("ICON_PROJECTS")}/>
-        <Icon title="about" icon={Constants.get("ICON_ABOUT")}/>
-        <Icon title="contact" icon={Constants.get("ICON_CONTACT")}/>
-        <Icon title="terminal" icon="./assets/win95/shell32_3.ico"/>
-        <Icon title="" icon="./assets/win95/winhlp32_4001.ico"/>
+        {icons}
       </div>
     )
   }

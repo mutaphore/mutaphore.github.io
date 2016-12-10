@@ -11,17 +11,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedView: Constants.get("VIEW_HOME")
+      views: ["home", "projects", "about", "contact", "terminal"],
+      selectedView: "home"
     };
   }
   selectView(view) {
+    console.log("Selected view " + view);
     this.setState({ selectedView: view });
   }
   render() {
     return (
       <div id="app">
-        <NavBar selectedView={this.state.selectedView}/>
-        <Desktop selectedView={this.state.selectedView}/>
+        <NavBar views={this.state.views}
+                selectedView={this.state.selectedView} 
+                selectView={this.selectView.bind(this)} />
+        <Desktop views={this.state.views}
+                 selectedView={this.state.selectedView}
+                 selectView={this.selectView.bind(this)} />
       </div>
     );
   }
