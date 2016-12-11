@@ -23,8 +23,8 @@ module.exports = (function () {
     contact: {
       title: "contact",
       icon: "./assets/win95/smmscrpt_100.ico",
-      width: "100%",
-      height: "600px"
+      width: "400px",
+      height: "auto"
     },
     terminal: {
       title: "terminal",

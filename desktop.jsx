@@ -34,21 +34,14 @@ class Desktop extends React.Component {
   }
   render() {
     const view = this.props.selectedView;
-    let icons = [];
-    let explorer = null;
-    if (view === "home") {
-      // only show icons when at home view
-      icons = this.state.icons;
-    } else {
-      // show view explorer
-      explorer = <Explorer selectedView={this.props.selectedView}
-                           width={Constants.get(view).width}
-                           height={Constants.get(view).height} />
-    }
     return (
       <div id="desktop">
-        {icons}
-        {explorer}
+        {view === "home" && this.state.icons}
+        {view !== "home" && 
+         <Explorer selectedView={view}
+                   closeView={this.selectView.bind(this, "home")}
+                   width={Constants.get(view).width}
+                   height={Constants.get(view).height} />}
       </div>
     )
   }
