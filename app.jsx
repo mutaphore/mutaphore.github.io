@@ -16,7 +16,6 @@ class App extends React.Component {
     };
   }
   selectView(view) {
-    console.log("Selected view " + view);
     this.setState({ selectedView: view });
   }
   render() {

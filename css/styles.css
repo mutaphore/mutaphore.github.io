@@ -18,7 +18,23 @@ div #desktop {
   color: #F5F5F5;
 }
 
-.window {
-  height: 600px;
-  width: 100%;
+.explorer {
+  /*height: 600px;*/
+  /*width: 100%;*/
+  border-bottom: solid 6px #101010;
+  border-top: solid 6px #101010;
+  border-left: solid 6px #101010;
+  border-right: solid 6px #101010;
+  background-color: #e3e3e3;
+}
+
+.explorer-bar {
+  height: 1.2em;
+  /*width: 100%;*/
+  background-color: #101010;
+  text-align: center;
+}
+
+.explorer-close-btn {
+  float: left;
 }
