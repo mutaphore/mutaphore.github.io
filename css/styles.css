@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body { 
   padding-top: 50px;
   background-color: #008080;
@@ -24,13 +28,15 @@ div #desktop {
   border-left: solid 6px #101010;
   border-right: solid 6px #101010;
   background-color: #e3e3e3;
-  height: auto;
 }
 
 .explorer-bar {
-  height: 1.2em;
+  height: 1.6em;
   background-color: #101010;
-  text-align: center;
+}
+
+.explorer-area {
+  overflow-y: scroll;
 }
 
 .explorer-close-btn {
