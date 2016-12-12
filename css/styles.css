@@ -19,7 +19,6 @@ body {
 
 div #desktop {
   padding: 50px;
-  color: #F5F5F5;
 }
 
 .explorer {
@@ -33,6 +32,7 @@ div #desktop {
 .explorer-bar {
   height: 1.6em;
   background-color: #101010;
+  color: #F5F5F5;
 }
 
 .explorer-area {

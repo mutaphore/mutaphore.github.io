@@ -24,7 +24,7 @@ module.exports = (function () {
       title: "about",
       view: AboutView,
       icon: "./assets/win95/ulclient_1002.ico",
-      width: "100%",
+      width: "650px",
       height: "600px"
     },
     contact: {

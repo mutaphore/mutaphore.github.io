@@ -12,7 +12,7 @@ class Icon extends React.Component {
             <img className="media-object" src={this.props.icon} />
           </a>
         </div>
-        <div className="media-body">
+        <div className="media-body" style={{ color: "#F5F5F5" }}>
           <h4 className="media-heading">{this.props.title}</h4>
         </div>
       </div>
