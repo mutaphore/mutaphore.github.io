@@ -24,8 +24,8 @@ module.exports = (function () {
       title: "about",
       view: AboutView,
       icon: "./assets/win95/ulclient_1002.ico",
-      width: "650px",
-      height: "600px"
+      width: "750px",
+      height: "550px"
     },
     contact: {
       title: "contact",
@@ -38,8 +38,8 @@ module.exports = (function () {
       title: "terminal",
       view: TerminalView,
       icon: "./assets/win95/shell32_3.ico",
-      width: "100%",
-      height: "600px"
+      width: "1000px",
+      height: "550px"
     },
     help: {
       title: "help",

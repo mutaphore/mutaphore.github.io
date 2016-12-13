@@ -9,7 +9,7 @@ body {
 */
 
 .term-window {
-    height: 600px;
+    height: 100%;
     width: 100%;
 }
 
@@ -50,7 +50,7 @@ body {
     height: 100%;
     padding: 10px;
     position: relative;
-    overflow: scroll;
+    overflow: hidden;
 }
 .cmd {
     padding: 0;

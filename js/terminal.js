@@ -1,4 +1,8 @@
-import $ from "./js/jquery.terminal-0.8.7.min.js"
+'use strict';
+
+// import $ from "./jquery.terminal-0.8.7.min.js";
+import JSInterpreter from "./JSInterpreter.js";
+import LinearRegression from "./LinearRegression.js";
 
 var Terminal = function() {
     this.term = null;
