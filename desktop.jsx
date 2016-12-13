@@ -38,10 +38,11 @@ class Desktop extends React.Component {
       <div id="desktop">
         {view === "home" && this.state.icons}
         {view !== "home" && 
-         <Explorer selectedView={this.props.selectedView}
-                   closeView={this.selectView.bind(this, "home")}
-                   width={Constants.get(view).width}
-                   height={Constants.get(view).height} />}
+          <Explorer selectedView={this.props.selectedView}
+                    closeView={this.selectView.bind(this, "home")}
+                    width={Constants.get(view).width}
+                    height={Constants.get(view).height} />}
+
       </div>
     )
   }

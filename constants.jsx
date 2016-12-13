@@ -18,13 +18,13 @@ module.exports = (function () {
       view: ProjectsView,
       icon: "./assets/win95/wmsui32_3924.ico",
       width: "800px",
-      height: "400px"
+      height: "580px"
     },
     about: {
       title: "about",
       view: AboutView,
       icon: "./assets/win95/ulclient_1002.ico",
-      width: "750px",
+      width: "700px",
       height: "550px"
     },
     contact: {

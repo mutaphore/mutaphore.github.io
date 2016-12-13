@@ -23,7 +23,8 @@ class App extends React.Component {
       <div id="app">
         <NavBar views={this.state.views}
                 selectedView={this.state.selectedView} 
-                selectView={this.selectView.bind(this)} />
+                selectView={this.selectView.bind(this)} 
+                utcOffset={-5}/>
         <Desktop views={this.state.views}
                  selectedView={this.state.selectedView}
                  selectView={this.selectView.bind(this)} />

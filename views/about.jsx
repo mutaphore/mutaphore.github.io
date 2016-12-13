@@ -20,8 +20,8 @@ class AboutView extends React.Component {
         <div className="well well-md">
           <h4 className="lead">Education</h4>
           <div className="list-group">
-            <li className="list-group-item"><p>M.Sc. Computer Science, New York University, Courant Institute of Mathematical Sciences - 2015</p></li>
-            <li className="list-group-item"><p>B.Sc. Mechanical Engineering, University of California, San Diego - 2009</p></li>
+            <li className="list-group-item"><img style={{ height: "40px", width: "40px" }} src="./assets/nyu_logo.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<span>M.S. Computer Science @ New York University - 2015</span></li>
+            <li className="list-group-item"><img style={{ height: "40px", width: "40px" }} src="./assets/ucsd_logo.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;<span>B.S. Mechanical Engineering @ University of California, San Diego - 2009</span></li>
           </div>
           <img src="./assets/win95/calc_SC.ico"/> <a href="#/about" data-toggle="modal" data-target="#classNameListModal">Coursework</a>
           <br/>
@@ -29,14 +29,14 @@ class AboutView extends React.Component {
         <div className="well well-md">
           <h4 className="lead">Professional Experience</h4>
           <div className="list-group">
-            <li className="list-group-item"><p><strong>Software Engineer</strong> @ <a href="https://codiscope.com">Codiscope</a></p></li>
+            <li className="list-group-item"><p><strong>Senior Software Engineer</strong> @ <a href="https://codiscope.com">Codiscope</a></p></li>
             <li className="list-group-item"><p><strong>Software Engineering Intern</strong> @ <a href="http://empirasign.com">Empirasign Strategies</a></p></li>
             <li className="list-group-item"><p><strong>iOS Mobile Application Developer</strong> @ <a href="http://www.mentoredata.com/web/index.php">Mentor E-Data</a></p></li>
             <li className="list-group-item"><p><strong>Mechanical Engineer/Applications Engineer</strong> @ <a href="http://www.nordson.com/en-us/divisions/asymtek">Nordson Asymtek</a></p></li>
           </div>
           <img src="./assets/win95/wordpad_165.ico"/> <a href="./files/chen_resume.pdf">Resume</a><br/>
 
-          <div className="modal fade" id="classNameListModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+          <div className="modal fade" id="classNameListModal" tabIndex="-1" role="dialog" aria-labelledby="modalLabel">
             <div className="modal-dialog modal-sm">
               <div className="modal-content">
                 <div className="modal-header">
