@@ -17,7 +17,7 @@ module.exports = (function () {
       title: "projects",
       view: ProjectsView,
       icon: "./assets/win95/wmsui32_3924.ico",
-      width: "800px",
+      width: "900px",
       height: "580px"
     },
     about: {

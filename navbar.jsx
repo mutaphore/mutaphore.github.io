@@ -12,39 +12,41 @@ class NavBar extends React.Component {
   setTime() {
     let currentdate = new Date();
     let hours = currentdate.getUTCHours() + parseInt(this.props.utcOffset);    
-
     // correct for number over 24, and negatives
-    if( hours >= 24 ){ hours -= 24; }
-    if( hours < 0   ){ hours += 12; }
-
+    if (hours >= 24){ 
+      hours -= 24; 
+    }
+    if (hours < 0){ 
+      hours += 12; 
+    }
     // add leading zero, first convert hours to string
     hours = hours + "";
-    if( hours.length == 1 ){ hours = "0" + hours; }
-
+    if (hours.length == 1){ 
+      hours = "0" + hours; 
+    }
     // minutes are the same on every time zone
     let minutes = currentdate.getUTCMinutes();
-  
     // add leading zero, first convert hours to string
     minutes = minutes + "";
-    if( minutes.length == 1 ){ minutes = "0" + minutes; }
-
+    if (minutes.length == 1){ 
+      minutes = "0" + minutes; 
+    }
     this.setState({
-      hours: hours,
-      minutes: minutes
+      time: `${hours}:${minutes}`
     });
   }
   componentWillMount() {
     this.setTime();
   }
   componentDidMount() {
-     window.setInterval(function () {
+    // set the time every minute
+    window.setInterval(function () {
       this.setTime();
     }.bind(this), 60*1000);
   }
   render() {
     const self = this;
     const navItems = [];
-    const time = " " + this.state.hours + ":" + this.state.minutes;
     // only render the navbar items when not at home view
     if (this.props.selectedView !== "home") {
       this.props.views.forEach(function (view) {
@@ -78,7 +80,7 @@ class NavBar extends React.Component {
             <li>
               <a href="#/home">
                 <span className="glyphicon glyphicon-time" aria-hidden="true"></span> 
-                {time}
+                {" " + this.state.time}
               </a>
             </li>
           </ul>
