@@ -1,0 +1,54 @@
+html {
+  overflow-y: scroll;
+}
+
+body { 
+  padding-top: 50px;
+  background-color: #008080;
+  /*background-color: #004e98;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+div #desktop {
+  padding: 50px;
+}
+
+.explorer {
+  border-bottom: solid 6px #101010;
+  border-top: solid 6px #101010;
+  border-left: solid 6px #101010;
+  border-right: solid 6px #101010;
+  background-color: #e3e3e3;
+}
+
+.explorer-bar {
+  height: 1.9em;
+  background-color: #101010;
+  color: #F5F5F5;
+}
+
+.explorer-area {
+  overflow-y: scroll;
+}
+
+.explorer-close-btn {
+  float: left;
+}
+
+.vis-item.yellow {
+  background-color: blue;
+}
+
+.vis-item.red {
+  color: white;
+  background-color: red;
+  border-color: darkred;
+}
