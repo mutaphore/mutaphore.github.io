@@ -1,4 +1,4 @@
-var JSInterpreter = function(cmd, term) {
+module.exports = function(cmd, term) {
     if (cmd !== '') {
         try {
             var result = window.eval(cmd);

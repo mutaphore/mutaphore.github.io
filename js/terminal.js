@@ -8,18 +8,22 @@ var Terminal = function() {
     this.term = null;
 };
 
-Terminal.greetingsMsg = '==Welcome to my terminal emulator==\n' + 
-                        'Type "help" to get a list of commands\n' + 
-                        'Type "clear" to clear the screen\n' +
-                        'Type "exit" to exit any nested interpreters';
+Terminal.greetingsMsg = 
+`==Welcome to my terminal emulator==
+
+Type "help" to get a list of commands
+Type "clear" to clear the screen
+Type "exit" to exit any nested interpreters
+ctrl+r for reverse search through history
+`;
 
 Terminal.prototype.init = function() {
 
     this.term = $('#term').terminal({
         help: function() {
-            this.echo("echo <arg>           =>      echoes the argument");
-            this.echo("add <arg1> <arg2>    =>      adds two objects");
-            this.echo("js                   =>      runs the javascript interpreter");
+            this.echo("echo <arg>        => echoes the argument");
+            this.echo("add <arg1> <arg2> => adds two objects");
+            this.echo("js                => runs the javascript interpreter");
             // this.echo("lr                   =>      runs linear regression");
         },
         echo: function(arg1) {
@@ -56,7 +60,7 @@ Terminal.prototype.init = function() {
         }
     },
     {
-        prompt: '> ',
+        prompt: '>>> ',
         name: 'Command line',
         greetings: Terminal.greetingsMsg,
         onClear: function(term) {

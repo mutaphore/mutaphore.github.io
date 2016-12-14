@@ -27,6 +27,11 @@ class Desktop extends React.Component {
             icon={Constants.get("help").icon}
             popover={Constants.get("help").popover} />
     );
+    icons.push(
+      <Icon key="trash" 
+            icon={Constants.get("trash").icon}
+            popover={Constants.get("trash").popover} />
+    );
     this.state = {
       icons: icons
     };

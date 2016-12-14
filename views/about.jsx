@@ -2,8 +2,32 @@
 
 const React    = require('react');
 const ReactDOM = require('react-dom');
+const vis      = require('vis');
 
 class AboutView extends React.Component {
+  componentDidMount() {
+    // build experience timeline
+    const container = document.getElementById('visualization');
+    const items = new vis.DataSet([
+      {id: 1, content: '<strong>Senior Software Engineer</strong><br/>@<a href="https://codiscope.com">Codiscope</a>', start: '2016-01-01', end: Date.now()},
+      {id: 2, content: '<strong>Software Engineering Intern</strong><br/>@<a href="http://empirasign.com">Empirasign Strategies</a>', start: '2014-10-19', end: '2015-10-05'},
+      {id: 3, content: '<strong>Mobile Application Developer</strong><br/>@<a href="http://www.mentoredata.com/web/index.php">Mentor E-Data</a>', start: '2013-11-4', end: '2014-08-25'},
+      {id: 4, content: '<strong>Mechanical Engineer</strong><br/>@<a href="http://www.nordson.com/en-us/divisions/asymtek">Nordson Asymtek</a>', start: '2010-04-3', end: '2013-06-20'},
+      {id: 5, content: '<strong>NYU</strong>', start: '2014-09-15', end: '2015-12-20', type: 'background'},
+      {id: 6, content: '<strong>UCSD</strong>', start: '2004-09-14', end: '2009-06-20', type: 'background'}
+    ]);
+    const options = {
+      start: '2014-04-01',
+      end: Date.now(),
+      width: '100%',
+      height: '180px',
+      timeAxis: {
+        scale: 'month', 
+        step: 3
+      }
+    };
+    const timeline = new vis.Timeline(container, items, options);
+  }
   render() {
     return (
       <div>
@@ -20,20 +44,23 @@ class AboutView extends React.Component {
         <div className="well well-md">
           <h4 className="lead">Education</h4>
           <div className="list-group">
-            <li className="list-group-item"><img style={{ height: "40px", width: "40px" }} src="./assets/nyu_logo.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<span>M.S. Computer Science @ New York University - 2015</span></li>
-            <li className="list-group-item"><img style={{ height: "40px", width: "40px" }} src="./assets/ucsd_logo.gif"/>&nbsp;&nbsp;&nbsp;&nbsp;<span>B.S. Mechanical Engineering @ University of California, San Diego - 2009</span></li>
+            <li className="list-group-item">
+              <img style={{ height: "40px", width: "40px" }} src="./assets/nyu_logo.jpg"/>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span><strong>M.S. Computer Science @ New York University - 2015</strong></span>
+            </li>
+            <li className="list-group-item">
+              <img style={{ height: "40px", width: "40px" }} src="./assets/ucsd_logo.gif"/>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span><strong>B.S. Mechanical Engineering @ University of California, San Diego - 2009</strong></span>
+            </li>
           </div>
           <img src="./assets/win95/calc_SC.ico"/> <a href="#/about" data-toggle="modal" data-target="#classNameListModal">Coursework</a>
           <br/>
         </div>
         <div className="well well-md">
           <h4 className="lead">Professional Experience</h4>
-          <div className="list-group">
-            <li className="list-group-item"><p><strong>Senior Software Engineer</strong> @ <a href="https://codiscope.com">Codiscope</a></p></li>
-            <li className="list-group-item"><p><strong>Software Engineering Intern</strong> @ <a href="http://empirasign.com">Empirasign Strategies</a></p></li>
-            <li className="list-group-item"><p><strong>iOS Mobile Application Developer</strong> @ <a href="http://www.mentoredata.com/web/index.php">Mentor E-Data</a></p></li>
-            <li className="list-group-item"><p><strong>Mechanical Engineer/Applications Engineer</strong> @ <a href="http://www.nordson.com/en-us/divisions/asymtek">Nordson Asymtek</a></p></li>
-          </div>
+          <div id="visualization"></div><br/>
           <img src="./assets/win95/wordpad_165.ico"/> <a href="./files/chen_resume.pdf">Resume</a><br/>
 
           <div className="modal fade" id="classNameListModal" tabIndex="-1" role="dialog" aria-labelledby="modalLabel">

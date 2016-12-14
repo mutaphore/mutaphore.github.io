@@ -44,8 +44,13 @@ module.exports = (function () {
     help: {
       title: "help",
       icon: "./assets/win95/winhlp32_4001.ico",
-      popover: `<img src='https://facebook.github.io/react/img/logo.svg' style='width: 35px; height: 35px;'>
-                <span>Built with React.js</span>`
+      popover: `<span>Built with React.js</span><br>View the <a href="https://github.com/mutaphore/mutaphore.github.io">source</a>`
+    },
+    trash: {
+      title: "trash",
+      icon: "./assets/win95/shell32_33.ico",
+      popover: `<span>Looks like there some trash in here...</span><br/>
+                <a href="/archive">old version of this site made with Angular.js</a>`
     }
   };
   return {
