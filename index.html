@@ -27,8 +27,17 @@
     <script src="./js/jquery.terminal-0.8.7.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Loading screen -->
+    <script>
+      $(window).load(function() {
+      // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+      });
+    </script>
   </head>
   <body>
+    <!-- Loading screen -->
+    <div class="se-pre-con"></div>
     <!-- React DOM root -->
     <div id="root"></div>
     <!-- Webpack bundle -->
