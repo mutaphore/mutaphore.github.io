@@ -78,7 +78,7 @@ class NavBar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="#/home">
+              <a href="#">
                 <span className="glyphicon glyphicon-time" aria-hidden="true"></span> 
                 {" " + this.state.time}
               </a>

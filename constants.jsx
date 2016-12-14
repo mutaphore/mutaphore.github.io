@@ -43,7 +43,9 @@ module.exports = (function () {
     },
     help: {
       title: "help",
-      icon: "./assets/win95/winhlp32_4001.ico"
+      icon: "./assets/win95/winhlp32_4001.ico",
+      popover: `<img src='https://facebook.github.io/react/img/logo.svg' style='width: 35px; height: 35px;'>
+                <span>Built with React.js</span>`
     }
   };
   return {

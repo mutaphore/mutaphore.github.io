@@ -23,7 +23,9 @@ class Desktop extends React.Component {
     });
     // add help icon (no view)
     icons.push(
-      <Icon key="help" title="" icon={Constants.get("help").icon} />
+      <Icon key="help" 
+            icon={Constants.get("help").icon}
+            popover={Constants.get("help").popover} />
     );
     this.state = {
       icons: icons
@@ -42,7 +44,6 @@ class Desktop extends React.Component {
                     closeView={this.selectView.bind(this, "home")}
                     width={Constants.get(view).width}
                     height={Constants.get(view).height} />}
-
       </div>
     )
   }
